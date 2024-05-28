@@ -7,8 +7,14 @@ const ProductSchema = new mongoose.Schema({
     maker: String,
     category: String,
     imgurl: String,
-    liked: Boolean,
-    recent: Boolean,
+    liked: {
+        type: Boolean,
+        default: false
+    },
+    recent: {
+        type: Boolean,
+        default: false
+    },
     category2: String
 });
 
