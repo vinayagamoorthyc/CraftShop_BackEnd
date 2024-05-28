@@ -6,6 +6,7 @@ const ProductSchema = new mongoose.Schema({
     desc: String,
     maker: String,
     category: String,
+    category2: String,
     imgurl: String,
     liked: {
         type: Boolean,
@@ -14,8 +15,7 @@ const ProductSchema = new mongoose.Schema({
     recent: {
         type: Boolean,
         default: false
-    },
-    category2: String
+    }
 });
 
 const ProductModel = mongoose.model("products", ProductSchema);
