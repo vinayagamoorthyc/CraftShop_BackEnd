@@ -9,7 +9,7 @@ app.use(express.json());
 
 mongoose.connect("mongodb+srv://VinayagaMoorthy27:Vinayaga2709@vinayagadb.o991msv.mongodb.net/CraftShop?retryWrites=true&w=majority");
 
-app.listen(3002, ()=>{
+app.listen(3001, ()=>{
     console.log("server is running");
 });
 
