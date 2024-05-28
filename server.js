@@ -1,0 +1,39 @@
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const ProductModel = require("./models/product.js");
+
+const app = express();
+app.use(cors());
+app.use(express.json());
+
+mongoose.connect("mongodb+srv://VinayagaMoorthy27:Vinayaga2709@vinayagadb.o991msv.mongodb.net/CraftShop?retryWrites=true&w=majority");
+
+app.listen(3002, ()=>{
+    console.log("server is running");
+});
+
+// ------------------------------------- Products ------------------------------------
+
+app.get("/getProduct", (req,res)=>{
+    ProductModel.find()
+    .then(e=>res.json(e))
+    .catch(err=>res.json(err));
+})
+app.post("/createProduct", (req, res)=>{
+    ProductModel.create(req.body)
+    .then(e=>res.json(e))
+    .catch(err=>res.json(err))
+});
+app.delete("/deleteProduct/:id", (req, res)=>{
+    const id = req.params.id;
+    ProductModel.findByIdAndDelete({_id: id})
+    .then(e=>res.json(e))
+    .catch(err=>res.json(err))
+});
+app.get("/getUp/:id", (req, res)=>{
+    const id = req.params.id;
+    ProductModel.findById({_id:id})
+    .then(e=>res.json(e))
+    .catch(err=>res.json(err))
+  });
