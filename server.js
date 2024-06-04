@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const ProductModel = require("./models/product.js");
+const SubscriberModel = require('./models/subscribers.js');
 
 const app = express();
 app.use(cors());
@@ -45,3 +46,11 @@ app.get("/getParticular/:id", (req, res)=>{
     .then(e=>res.json(e))
     .catch(err=>res.json(err))
   })
+
+  // ------------------------------ subscriber --------------------------------
+
+  app.post("/addSubscriber", (req,res)=>{
+    SubscriberModel.create(req.body)
+    .then(e=>res.json(e))
+    .catch(err=>res.json(err));
+  });
