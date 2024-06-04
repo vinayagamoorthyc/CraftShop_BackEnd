@@ -49,8 +49,19 @@ app.get("/getParticular/:id", (req, res)=>{
 
   // ------------------------------ subscriber --------------------------------
 
+  app.get("/getSubscribers", (req,res)=>{
+    SubscriberModel.find()
+    .then(e=>res.json(e))
+    .catch(err=>res.json(err));
+})
   app.post("/addSubscriber", (req,res)=>{
     SubscriberModel.create(req.body)
     .then(e=>res.json(e))
     .catch(err=>res.json(err));
   });
+  app.delete("/deleteSubcriber/:id", (req, res)=>{
+    const id = req.params.id;
+    SubscriberModel.findByIdAndDelete({_id: id})
+    .then(e=>res.json(e))
+    .catch(err=>res.json(err))
+});
