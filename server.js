@@ -31,9 +31,17 @@ app.delete("/deleteProduct/:id", (req, res)=>{
     .then(e=>res.json(e))
     .catch(err=>res.json(err))
 });
-app.get("/getUp/:id", (req, res)=>{
+app.get("/getParticular/:id", (req, res)=>{
     const id = req.params.id;
     ProductModel.findById({_id:id})
     .then(e=>res.json(e))
     .catch(err=>res.json(err))
   });
+  app.put("/updateProduct/:id", (req, res)=>{
+    const id = req.params.id;
+    ProductModel.findByIdAndUpdate({_id: id}, {proname: req.body.proname, prorate: req.body.prorate, 
+      desc: req.body.desc, maker: req.body.maker,category: req.body.category, category2: req.body.category2, imgurl: req.body.imgurl
+    })
+    .then(e=>res.json(e))
+    .catch(err=>res.json(err))
+  })
