@@ -1,9 +1,13 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
+const cookieParser = require('cookie-parser');
 const ProductModel = require("./models/product.js");
 const SubscriberModel = require('./models/subscribers.js');
 const ReportModel = require('./models/reports.js');
+const UserModel = require('./models/users.js');
 
 const app = express();
 app.use(cors());
@@ -84,4 +88,16 @@ app.get("/getParticular/:id", (req, res)=>{
     ReportModel.findByIdAndDelete({_id: id})
     .then(e=>res.json(e))
     .catch(err=>res.json(err))
+});
+
+// -------------------------------------User login registration-------------------------
+
+app.post("/register",(req, res)=>{
+  const {username, email, password}=req.body;
+  bcrypt.hash(password, 3)
+  .then(hash=>{
+    UserModel.create({username, email, password: hash})
+    .then(e=>res.json("Success!"))
+    .catch(err=>res.json(err))
+  }).catch(err=>res.json(err))
 });
