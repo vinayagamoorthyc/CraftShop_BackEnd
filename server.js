@@ -99,5 +99,5 @@ app.post("/register",(req, res)=>{
     UserModel.create({username, email, password: hash})
     .then(e=>res.json("Success!"))
     .catch(err=>res.json(err))
-  }).catch(err=>res.json(err))
+  }).catch(err=>res.json(err));
 });
