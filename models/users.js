@@ -35,7 +35,11 @@ const UserSchema = new mongoose.Schema({
     street: {
         type: String,
         default: "Nothing to Show"
-    }
+    },
+    role: {
+        type: String,
+        default: "user"
+    },
 });
 
 const UserModel = mongoose.model("users", UserSchema);

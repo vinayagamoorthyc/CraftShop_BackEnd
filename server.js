@@ -94,7 +94,7 @@ app.get("/getParticular/:id", (req, res)=>{
 
 app.post("/register",(req, res)=>{
   const {username, email, password}=req.body;
-  bcrypt.hash(password, 3)
+  bcrypt.hash(password, 10)
   .then(hash=>{
     UserModel.create({username, email, password: hash})
     .then(e=>res.json("Success!"))
