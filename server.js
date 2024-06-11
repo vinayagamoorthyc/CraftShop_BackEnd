@@ -7,7 +7,7 @@ const cookieParser = require('cookie-parser');
 const ProductModel = require("./models/product.js");
 const SubscriberModel = require('./models/subscribers.js');
 const ReportModel = require('./models/reports.js');
-const UserModel = require('./models/users.js');
+const UsersModel = require('./models/users.js');
 
 const app = express();
 app.use(cors());
@@ -94,9 +94,9 @@ app.get("/getParticular/:id", (req, res)=>{
 
 app.post("/register",(req, res)=>{
   const {username, email, password}=req.body;
-  bcrypt.hash(password, 10)
+  bcrypt.hash(password, 3)
   .then(hash=>{
-    UserModel.create({username, email, password: hash})
+    UsersModel.create({username, email, password: hash})
     .then(e=>res.json("Success!"))
     .catch(err=>res.json(err))
   }).catch(err=>res.json(err));

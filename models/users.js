@@ -1,22 +1,27 @@
 const mongoose=require("mongoose");
 
-const UserSchema = new mongoose.Schema({
+const UsersSchema = new mongoose.Schema({
     username: String,
     email: String,
     password: String,
-    firstname:  {
+    
+    role: {
+        type: String,
+        default: "user"
+    },
+    firstname: {
         type: String,
         default: "Nothing to Show"
     },
-    lastname:  {
+    lastname: {
         type: String,
         default: "Nothing to Show"
     },
-    phone:  {
-        type: Number,
+    phone: {
+        type: String,
         default: "Nothing to Show"
     },
-    bio:  {
+    bio: {
         type: String,
         default: "Nothing to Show"
     },
@@ -36,11 +41,8 @@ const UserSchema = new mongoose.Schema({
         type: String,
         default: "Nothing to Show"
     },
-    role: {
-        type: String,
-        default: "user"
-    },
+    
 });
 
-const UserModel = mongoose.model("users", UserSchema);
-module.exports = UserModel;
+const UsersModel = mongoose.model("users", UsersSchema);
+module.exports = UsersModel;
