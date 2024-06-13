@@ -19,7 +19,7 @@ const UsersSchema = new mongoose.Schema({
     },
     phone: {
         type: String,
-        default: "Nothing to Show"
+        default: "00000 00000"
     },
     bio: {
         type: String,
@@ -35,7 +35,7 @@ const UsersSchema = new mongoose.Schema({
     },
     postalcode: {
         type: String,
-        default: "Nothing to Show"
+        default: "000 000"
     },
     street: {
         type: String,

@@ -121,3 +121,21 @@ app.post("/login", (req, res)=>{
     }
   })
 })
+
+app.get("/getUserDetails", (req, res)=>{
+  UsersModel.find().
+  then(e => res.json(e))
+  .catch(err => res.json(err))
+});
+app.delete("/deleteUser/:id", (req,res)=>{
+  const id = req.params.id;
+  UsersModel.findByIdAndDelete({_id:id})
+  .then(e=>res.json(e))
+  .catch(err=>res.json(err))
+});
+app.get("/getUser/:id", (req, res)=>{
+  const id=req.params.id;
+  UsersModel.findById({_id:id})
+  .then(e=>res.json(e))
+  .catch(err=>console.log(err));
+})
