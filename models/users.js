@@ -41,7 +41,12 @@ const UsersSchema = new mongoose.Schema({
         type: String,
         default: "Nothing to Show"
     },
-    
+    cart:[{
+        imgurl: String,
+        proname: String,
+        prorate: Number,
+        count: Number,
+    }]
 });
 
 const UsersModel = mongoose.model("users", UsersSchema);

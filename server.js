@@ -101,3 +101,23 @@ app.post("/register",(req, res)=>{
     .catch(err=>res.json(err))
   }).catch(err=>res.json(err));
 });
+
+app.post("/login", (req, res)=>{
+  const {email, password}=req.body;
+  UsersModel.findOne({email: email})
+  .then(user =>{
+    if(user){
+      bcrypt.compare(password, user.password, (err, response)=>{
+        if(response){
+          const token = jwt.sign({email: user.email, role: user.role},
+            "jwt-secret-key", {expiresIn: "1d"});
+            return res.json({Status: "success", role: user.role, id: user._id, tok: token});
+        }else{
+          return res.json("incorrect password!");
+        }
+      })
+    }else{
+      return res.json("no record exist");
+    }
+  })
+})
