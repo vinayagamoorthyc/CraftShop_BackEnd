@@ -111,7 +111,7 @@ app.post("/login", (req, res)=>{
         if(response){
           const token = jwt.sign({email: user.email, role: user.role},
             "jwt-secret-key", {expiresIn: "1d"});
-            return res.json({Status: "success", role: user.role, id: user._id, tok: token});
+            return res.json({Status: "success", role: user.role, id: user._id, tok: token, mail:user.email});
         }else{
           return res.json("incorrect password!");
         }
@@ -138,4 +138,14 @@ app.get("/getUser/:id", (req, res)=>{
   UsersModel.findById({_id:id})
   .then(e=>res.json(e))
   .catch(err=>console.log(err));
+})
+app.put("/updateUser/:id", (req, res)=>{
+  const id = req.params.id;
+  UsersModel.findByIdAndUpdate({_id: id}, {username: req.body.username, email: req.body.email, 
+    phone: req.body.phone, firstname: req.body.firstname, lastname: req.body.lastname, 
+    bio: req.body.bio, country: req.body.country, citystate: req.body.citystate, 
+    postalcode: req.body.postalcode, street: req.body.street
+  })
+  .then(e=>res.json(e))
+  .catch(err=>res.json(err))
 })
