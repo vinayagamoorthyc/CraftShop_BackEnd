@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
-const cookieParser = require('cookie-parser');
 const ProductModel = require("./models/product.js");
 const SubscriberModel = require('./models/subscribers.js');
 const ReportModel = require('./models/reports.js');
