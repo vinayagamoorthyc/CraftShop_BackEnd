@@ -132,6 +132,7 @@ app.delete("/deleteUser/:id", (req,res)=>{
   .then(e=>res.json(e))
   .catch(err=>res.json(err))
 });
+
 app.get("/getUser/:id", (req, res)=>{
   const id=req.params.id;
   UsersModel.findById({_id:id})
