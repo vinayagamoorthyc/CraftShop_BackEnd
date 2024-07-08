@@ -138,6 +138,7 @@ app.get("/getUser/:id", (req, res)=>{
   .then(e=>res.json(e))
   .catch(err=>console.log(err));
 })
+
 app.put("/updateUser/:id", (req, res)=>{
   const id = req.params.id;
   UsersModel.findByIdAndUpdate({_id: id}, {username: req.body.username, email: req.body.email, 
