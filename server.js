@@ -63,6 +63,7 @@ app.get("/getParticular/:id", (req, res)=>{
     .then(e=>res.json(e))
     .catch(err=>res.json(err));
   });
+  
   app.delete("/deleteSubcriber/:id", (req, res)=>{
     const id = req.params.id;
     SubscriberModel.findByIdAndDelete({_id: id})
@@ -83,7 +84,7 @@ app.get("/getParticular/:id", (req, res)=>{
     .then(e=>res.json(e))
     .catch(err=>res.json(err));
   });
-  
+
   app.delete("/deleteReport/:id", (req, res)=>{
     const id = req.params.id;
     ReportModel.findByIdAndDelete({_id: id})
