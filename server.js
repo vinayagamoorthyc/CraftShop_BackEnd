@@ -76,12 +76,14 @@ app.get("/getParticular/:id", (req, res)=>{
     ReportModel.find()
     .then(e=>res.json(e))
     .catch(err=>res.json(err));
-})
+});
+
   app.post("/addReport", (req,res)=>{
     ReportModel.create(req.body)
     .then(e=>res.json(e))
     .catch(err=>res.json(err));
   });
+  
   app.delete("/deleteReport/:id", (req, res)=>{
     const id = req.params.id;
     ReportModel.findByIdAndDelete({_id: id})
