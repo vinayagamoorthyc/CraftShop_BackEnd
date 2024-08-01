@@ -51,7 +51,7 @@ app.get("/getParticular/:id", (req, res)=>{
     .catch(err=>res.json(err))
   })
 
-  // ------------------------------ subscriber --------------------------------
+  // ------------------------------ subscriber ----------------------------------------
 
   app.get("/getSubscribers", (req,res)=>{
     SubscriberModel.find()
@@ -71,7 +71,7 @@ app.get("/getParticular/:id", (req, res)=>{
     .catch(err=>res.json(err))
 });
 
-  // ------------------------------ Reports -------------------------------------
+  // ------------------------------ Reports ------------------------------------------------
 
   app.get("/getReports", (req,res)=>{
     ReportModel.find()
